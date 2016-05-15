@@ -1,4 +1,6 @@
 node_modules/
 bower_components/
 todolist.txt
+.public/
+__fast_start.sublime-workspace
 __fast_start.sublime-project

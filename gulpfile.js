@@ -11,7 +11,7 @@ const cleanss = require('gulp-cleancss');
 const sourcemaps = require('gulp-sourcemaps');
 const htmlhint = require('gulp-htmlhint');
 const uglify = require('gulp-uglify');
-const browserSync = require('browser-sync');
+const browserSync = require('browser-sync').create();
 const ghPages = require('gulp-gh-pages');
 
 //проверка html кода
@@ -34,6 +34,7 @@ gulp.task('less', function () {
     ]))
     .pipe(rename('style.min.css'))
     .pipe(gulp.dest('./src/css'))
+    .pipe(browserSync.stream());
 });
 
 //собиратель в билд
@@ -42,7 +43,7 @@ gulp.task('build', function(){
     .pipe(cleanss())
     .pipe(rename('style.min.css'))
     .pipe(gulp.dest('./build/css'));
-  gulp.src('./src/html/*.html')
+  gulp.src('./src/*.html')
     .pipe(gulp.dest('./build/html'));
   gulp.src('./src/imgs/**/*.*')
     .pipe(gulp.dest('./build/imgs'));
@@ -51,15 +52,26 @@ gulp.task('build', function(){
     .pipe(gulp.dest('./build/js'));
   gulp.src('./src/svg/*.svg')
     .pipe(gulp.dest('./build/svg'));
-  });
+});
 
 // деплоер на github.io
 gulp.task('deploy', function() {
   return gulp.src('./build/**/*')
     .pipe(ghPages());
-  });
+});
+
+// запуск браузерсинка
+gulp.task('serve', ['less'], function(){
+  browserSync.init({
+    server: "./src"
+    });
+  //следим за less-файлами, выполняем задачу less
+  gulp.watch('src/less/**/*.less', ['less']);
+
+  gulp.watch('src/*.html').on('change', browserSync.reload);
+});
 
 // Вотчер 
-gulp.task('watch', function() {
-    gulp.watch('src/less/**/*.less', ['less']);
-    });
+//gulp.task('watch', ['browserSync'], function() {
+//    gulgulp p.watch('src/less/**/*.less', ['less']);
+//    });
