@@ -1,0 +1,17 @@
+div {
+  height: 100px;
+  background-color: pink;
+}
+
+b {
+  display: inline;
+  vertical-align: bottom;
+  padding: 0 20px;
+  border: 3px double #ccc;
+
+}
+
+a.target:hover { background-color: red; }
+a:hover .target { background-color: red; }
+.target a:hover { background-color: red; }
+a:hover.target { background-color: red; }

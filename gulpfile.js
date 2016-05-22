@@ -44,7 +44,7 @@ gulp.task('build', function(){
     .pipe(rename('style.min.css'))
     .pipe(gulp.dest('./build/css'));
   gulp.src('./src/*.html')
-    .pipe(gulp.dest('./build/html'));
+    .pipe(gulp.dest('./build/'));
   gulp.src('./src/imgs/**/*.*')
     .pipe(gulp.dest('./build/imgs'));
   gulp.src('./src/js/*.js')
@@ -60,18 +60,18 @@ gulp.task('deploy', function() {
     .pipe(ghPages());
 });
 
-// запуск браузерсинка
+gulp.task('clear', function() {
+  return gulp.src('build/**')
+    .pipe(clean({force:true}));
+});
+
+// запуск браузерсинка + компилятора less
 gulp.task('serve', ['less'], function(){
   browserSync.init({
     server: "./src"
     });
-  //следим за less-файлами, выполняем задачу less
+  //следим за файлами, выполняем задачу less
   gulp.watch('src/less/**/*.less', ['less']);
-
+  gulp.watch('src/js/**/*.js').on('change', browserSync.reload);
   gulp.watch('src/*.html').on('change', browserSync.reload);
 });
-
-// Вотчер 
-//gulp.task('watch', ['browserSync'], function() {
-//    gulgulp p.watch('src/less/**/*.less', ['less']);
-//    });
