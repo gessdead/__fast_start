@@ -8,8 +8,7 @@ to install:
 - use npm i 
 
 to work: 
-- gulp watch (with www)
-- gulp watch --dev (with src)
+- 'gulp watch' or 'gulp build'
 
 # changelog: 
 + add pug;

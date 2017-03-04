@@ -44,6 +44,14 @@ var files = {
     html: paths.html.src + '**/*.pug'
 };
 
+//build
+
+gulp.task('build', [
+    'less',
+    'pug',
+    'js'
+]);
+
 
 // Компиляция LESS
 gulp.task('less', function () {
