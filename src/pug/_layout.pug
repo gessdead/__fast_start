@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        link(rel='stylesheet', href='/styles/app.css')
+        script(src='/scripts/app.js')
+
+        block title
+            title Заголовок
+    body
+        header
+            include _blocks/header
+        main
+            block content

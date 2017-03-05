@@ -1,4 +1,4 @@
-# __fast_start 2.0
+# __fast_start 2.0.1
 you need these before installation: 
 - node.js
 - gulp
@@ -14,3 +14,4 @@ to work:
 + add pug;
 + change structure;
 + add yargs
++ add normalize
