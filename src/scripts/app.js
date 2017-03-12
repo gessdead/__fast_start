@@ -1,2 +1,16 @@
-var hi = 'hello world';
-console.log(hi + ' mfck yeah');
+define('app', [
+    'jquery'
+], function ($) {
+
+    (function($testFunc) {
+        if (!$testFunc) {
+            return;
+        }
+        
+        $testFunc.on('click', function() {
+            console.log('require test done');
+        });
+    })($('.b-icon__camera'));
+
+    return {};
+});

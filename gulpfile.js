@@ -56,9 +56,9 @@ var files = {
 
 gulp.task('build', [
     'less',
+    'svg-sprite',
     'pug',
-    'js',
-    'svg-sprite'
+    'js'
 ]);
 
 
@@ -80,7 +80,9 @@ gulp.task('less', function () {
 gulp.task('pug', function buildHTML() {
     return gulp.src(files.html)
         .pipe(plumberNotifier())
-        .pipe(pug())
+        .pipe(pug({
+            pretty: true
+        }))
         .pipe(gulp.dest(paths.html.dest))
         .pipe(browserSync.stream());
 });
@@ -146,6 +148,6 @@ gulp.task('watch', ['less'], function () {
     //следим за файлами, выполняем таски при изменении файлов
     gulp.watch(paths.styles.src + '**/*.less', ['less']);
     gulp.watch(files.scripts, ['js']);
-    gulp.watch(files.html, ['pug']);
     gulp.watch(files.svg, ['svg-sprite']);
+    gulp.watch(files.html, ['pug']);
 });

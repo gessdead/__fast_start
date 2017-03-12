@@ -3,7 +3,6 @@ html(lang='en')
     head
         meta(charset='UTF-8')
         link(rel='stylesheet', href='/styles/app.css')
-        script(src='/scripts/app.js')
 
         block title
             title Заголовок
@@ -14,3 +13,4 @@ html(lang='en')
         main
             block content
         include ../../www/svg/sprite.svg
+        script(src='/scripts/lib/requirejs/require.js' data-main="/scripts/config.js")

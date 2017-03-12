@@ -1,0 +1,16 @@
+{
+  "name": "__fast_start",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "@gessdead"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/gessdead/__fast_start",
+  "devDependencies": {
+    "requirejs": "latest"
+  },
+  "dependencies": {
+    "slick-carousel": "^1.6.0"
+  }
+}

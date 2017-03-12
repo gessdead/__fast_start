@@ -1,11 +1,11 @@
-# __fast_start 2.0.1
+# __fast_start 2.0.2
 you need these before installation: 
 - node.js
 - gulp
 
 to install: 
 - clone this repo 
-- use npm i 
+- use npm i && bower i
 
 to work: 
 - 'gulp watch' or 'gulp build'
@@ -17,7 +17,7 @@ to use svg sprite:
 - if you want to modify svg icon, write '+svg("name" , "modify")'
 - for example: '+svg('camera', '_color_red')'
 
-to use svg-sprite
+i use bower for js libs && requirejs
 
 # changelog: 
 + add pug;
@@ -25,3 +25,4 @@ to use svg-sprite
 + add yargs
 + add normalize
 + add svg-sprite
++ add requirejs

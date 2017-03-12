@@ -1,1 +1,1 @@
-var hi="hello world";console.log(hi+" mfck yeah");
+define("app",["jquery"],function(n){return function(n){n&&n.on("click",function(){console.log("require test done")})}(n(".b-icon__camera")),{}});
