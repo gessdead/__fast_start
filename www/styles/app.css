@@ -402,6 +402,19 @@ template {
 [hidden] {
   display: none;
 }
+.b-icon__camera {
+  width: 40px;
+  height: 40px;
+  fill: white;
+}
+.b-icon__camera_color_black {
+  fill: red;
+}
+.b-icon__magic {
+  width: 40px;
+  height: 40px;
+  fill: aqua;
+}
 body {
   background-color: pink;
 }

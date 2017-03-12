@@ -1,17 +1,20 @@
 'use strict';
 
-var gulp = require('gulp');
-var less = require('gulp-less');
+var gulp            = require('gulp');
+var less            = require('gulp-less');
 var plumberNotifier = require('gulp-plumber-notifier');
-var rename = require('gulp-rename');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var mqpacker = require('css-mqpacker');
-var uglify = require('gulp-uglify');
-var browserSync = require('browser-sync').create();
-var ghPages = require('gulp-gh-pages');
-var pug = require('gulp-pug');
-var argvs = require('yargs').argv;
+var rename          = require('gulp-rename');
+var postcss         = require('gulp-postcss');
+var autoprefixer    = require('autoprefixer');
+var mqpacker        = require('css-mqpacker');
+var uglify          = require('gulp-uglify');
+var browserSync     = require('browser-sync').create();
+var ghPages         = require('gulp-gh-pages');
+var pug             = require('gulp-pug');
+var argvs           = require('yargs').argv;
+var svgSprite       = require('gulp-svg-sprite');
+var svgo            = require('gulp-svgo');
+var svgmin          = require('gulp-svgmin');
 
 //paths
 var basePaths = {
@@ -35,13 +38,18 @@ var paths = {
     html: {
         src: basePaths.src + 'pug/',
         dest: basePaths.dest + 'html/'
+    },
+    svg: {
+        src: basePaths.src + 'svg/',
+        dest: basePaths.dest + 'svg/'
     }
 };
 
 var files = {
     styles: paths.styles.src + 'style.less',
     scripts: paths.scripts.src + '**/*.js',
-    html: paths.html.src + '**/*.pug'
+    html: paths.html.src + '**/*.pug',
+    svg: paths.svg.src + '**/*.svg'
 };
 
 //build
@@ -49,7 +57,8 @@ var files = {
 gulp.task('build', [
     'less',
     'pug',
-    'js'
+    'js',
+    'svg-sprite'
 ]);
 
 
@@ -85,6 +94,31 @@ gulp.task('js', function () {
         .pipe(browserSync.stream());
 });
 
+//сборка svg спрайта
+gulp.task('svg-sprite', function() {
+    return gulp.src(files.svg)
+        .pipe(svgSprite({
+            mode: {
+                symbol: {
+                    prefix: '.b-icon__',
+                    dest: '',
+                    dimensions: '',
+                    sprite: 'sprite.svg',
+                    example: false
+                }
+            },
+            svg: {
+                xmlDeclaration: false,
+                doctypeDeclaration: false,
+                rootAttributes: {
+                    class: 'b-icons__svg'
+                },
+                namespaceClassnames: false
+            }
+        }))
+        .pipe(gulp.dest(paths.svg.dest));
+});
+
 // деплоер на github.io
 gulp.task('deploy', function () {
     return gulp.src(basePaths.dest + '/**/*')
@@ -93,11 +127,25 @@ gulp.task('deploy', function () {
 
 // запуск браузерсинка + компилятора less
 gulp.task('watch', ['less'], function () {
-    browserSync.init({
-        server: basePaths.dest
-    });
+
+    if (argvs.dev) {
+        browserSync.init({
+            server: {
+                baseDir: basePaths.dest,
+                index: '/html/index.html'
+            }
+        });
+    } else {
+        browserSync.init({
+            server: {
+                baseDir: basePaths.dest
+            }
+        });
+    }
+
     //следим за файлами, выполняем таски при изменении файлов
     gulp.watch(paths.styles.src + '**/*.less', ['less']);
     gulp.watch(files.scripts, ['js']);
     gulp.watch(files.html, ['pug']);
+    gulp.watch(files.svg, ['svg-sprite']);
 });
