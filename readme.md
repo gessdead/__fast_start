@@ -2,6 +2,7 @@
 you need these before installation: 
 - node.js
 - gulp
+- npm && bower (global)
 
 to install: 
 - clone this repo 
