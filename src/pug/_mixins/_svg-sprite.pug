@@ -1,4 +1,4 @@
 mixin svg(name, modify)
-    - modify = (' b-icon__' + name + modify) || ''
+    -modify = modify ? ' b-icon__'+ name + modify : ''
     svg(class='b-icon__' + name + modify)
         use(xlink:href='#' + name)
