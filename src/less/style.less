@@ -5,8 +5,13 @@
 @import "./www/scripts/lib/slick-carousel/slick/slick";
 @import "./www/scripts/lib/slick-carousel/slick/slick-theme";
 
+//grid
+@import "grid/grid";
+
 //main
 @import "icons";
+
+@import "_blocks/_smarthouse";
 
 body {
     background-color: pink;
@@ -18,4 +23,15 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @media  (min-width: @screen-sm) {
+        font-size:  32px;
+    }
+
+    @media (min-width: @screen-md) {
+        font-size: 48px;
+    }
+
+
+
 }

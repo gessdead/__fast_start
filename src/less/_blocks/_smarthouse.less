@@ -1,0 +1,47 @@
+@iconcolor: #2fa0a9;
+@bgcolor: #fff;
+
+.smarthouse {
+    background-color: white;
+    display: flex;
+    flex-flow: column nowrap;
+
+    @media (min-width: @screen-md) {
+        flex-flow: row nowrap;
+    }
+}
+
+.smarthouse-descr__item {
+    padding: 20px;
+}
+
+.smarthouse-descr__ttl {
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.smarthouse-descr__subttl {
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.smarthouse__svg {
+
+    svg {
+        width: 320px;
+        height: 600px;
+    }
+}
+
+.smarthouse__svg-icon {
+
+    .background {
+        fill: @bgcolor;
+    }
+
+    .icon {
+        fill: @iconcolor;
+    }
+}
