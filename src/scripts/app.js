@@ -17,18 +17,19 @@ define('app', [
             return;
         }
 
-        //colors
-        var iconColor = '#2fa0a9';
-        var bgColor = '#fff';
+        //убираем active класс со всех иконок
+        function removeActive() {
+            iconWrap.forEach(function(item) {
+                item.classList.remove('is-active');
+            });
+        }
 
         var svg = document.querySelector('#houseset');
         var iconWrap = svg.querySelectorAll('.icon-wrap');
-        iconWrap.forEach(function(item, index) {
+        iconWrap.forEach(function(item) {
             item.addEventListener('click', function() {
-                var icon = this.querySelector('.icon');
-                var bg = this.querySelector('.background');
-                icon.style.fill = bgColor;
-                bg.style.fill = iconColor;
+                removeActive();
+                this.classList.add('is-active');
             });
         });
     })($('.j-svg-color'));

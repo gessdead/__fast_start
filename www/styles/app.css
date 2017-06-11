@@ -809,10 +809,18 @@ template {
   width: 320px;
   height: 600px;
 }
+.smarthouse__svg-icon .icon-wrap.is-active .background {
+  fill: #2fa0a9;
+}
+.smarthouse__svg-icon .icon-wrap.is-active .icon {
+  fill: #fff;
+}
 .smarthouse__svg-icon .background {
+  transition: fill .4s ease;
   fill: #fff;
 }
 .smarthouse__svg-icon .icon {
+  transition: fill .4s ease;
   fill: #2fa0a9;
 }
 body {

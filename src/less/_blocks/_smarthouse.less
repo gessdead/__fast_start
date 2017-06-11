@@ -37,11 +37,24 @@
 
 .smarthouse__svg-icon {
 
+    .icon-wrap.is-active {
+
+        .background {
+            fill: @iconcolor;
+        }
+
+        .icon {
+            fill: @bgcolor;
+        }
+    }
+
     .background {
+        transition: fill .4s ease;
         fill: @bgcolor;
     }
 
     .icon {
+        transition: fill .4s ease;
         fill: @iconcolor;
     }
 }
