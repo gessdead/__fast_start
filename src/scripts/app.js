@@ -12,8 +12,8 @@ define('app', [
         });
     })($('.b-icon__camera'));
     
-    (function($svgColor) {
-        if (!$svgColor) {
+    (function($svgHouse) {
+        if (!$svgHouse) {
             return;
         }
 
@@ -24,15 +24,29 @@ define('app', [
             });
         }
 
+        //логика текстовых блоков
+        function toogleText() {
+            var textBlock = document.querySelectorAll('.j-smart-text');
+            textBlock.forEach(function(item) {
+                item.style.display = 'none';
+                var textId = item.getAttribute('data-id');
+                console.log(textId);
+            });
+        }
+
         var svg = document.querySelector('#houseset');
         var iconWrap = svg.querySelectorAll('.icon-wrap');
         iconWrap.forEach(function(item) {
             item.addEventListener('click', function() {
                 removeActive();
+                toogleText();
                 this.classList.add('is-active');
+                var id = this.getAttribute('id');
             });
         });
-    })($('.j-svg-color'));
+
+
+    })($('.j-svg-house'));
 
     return {};
 });

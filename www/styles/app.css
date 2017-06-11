@@ -805,9 +805,12 @@ template {
   font-size: 18px;
   margin-bottom: 20px;
 }
+.smarthouse__svg {
+  overflow: hidden;
+}
 .smarthouse__svg svg {
-  width: 320px;
-  height: 600px;
+  width: 360px;
+  height: 350px;
 }
 .smarthouse__svg-icon .icon-wrap.is-active .background {
   fill: #2fa0a9;

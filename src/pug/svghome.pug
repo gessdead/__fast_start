@@ -2,12 +2,16 @@ extends _layout
 block title
     title SvgHouse
 block content
-    section.smarthouse
+    section.smarthouse.j-svg-house
         .smarthouse__inner
             .smarthouse-descr
-                .smarthouse-descr__item
-                    .smarthouse-descr__ttl Заголовок
+                .smarthouse-descr__item.j-smart-text(data-id='smarthub')
+                    .smarthouse-descr__ttl Smarthub
                     .smarthouse-descr__subttl Подзаголовок
                     .smarthouse-descr__txt Что-то тут написано
-            .smarthouse__svg.j-svg-color
+                .smarthouse-descr__item.j-smart-text(data-id='lamp')
+                    .smarthouse-descr__ttl Lamp
+                    .smarthouse-descr__subttl Подзаголовок
+                    .smarthouse-descr__txt Что-то тут написано
+            .smarthouse__svg
                 include _svg/housesvg
