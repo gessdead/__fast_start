@@ -28,23 +28,40 @@ define('app', [
 
         var svg = document.querySelector('#houseset');
         var iconWrap = svg.querySelectorAll('.icon-wrap');
-        iconWrap.forEach(function(item) {
-            item.addEventListener('click', function() {
-                removeActive();
-                this.classList.add('is-active');
-                var iconId = this.getAttribute('id');
-                var textBlock = document.querySelectorAll('.j-smart-text');
-                textBlock.forEach(function(item) {
-                    item.style.display = 'none';
-                    var textId = item.getAttribute('data-id');
-                    if (iconId === textId) {
-                        item.style.display = 'block';
-                    };
+        if (window.matchMedia('(min-width: 1280px)').matches) {
+            iconWrap.forEach(function(item) {
+                item.addEventListener('mousemove', function() {
+                    removeActive();
+                    this.classList.add('is-active');
+                    var iconId = this.getAttribute('id');
+                    var textBlock = document.querySelectorAll('.j-smart-text');
+                    textBlock.forEach(function(item) {
+                        item.classList.remove('is-active');
+                        var textId = item.getAttribute('data-id');
+                        if (iconId === textId) {
+                            item.classList.add('is-active');
+                        }
+                    });
                 });
             });
-        });
-
-
+        } else {
+            iconWrap.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    removeActive();
+                    this.classList.add('is-active');
+                    var iconId = this.getAttribute('id');
+                    var textBlock = document.querySelectorAll('.j-smart-text');
+                    textBlock.forEach(function(item) {
+                        item.classList.remove('is-active');
+                        var textId = item.getAttribute('data-id');
+                        if (iconId === textId) {
+                            item.classList.add('is-active');
+                        }
+                    });
+                });
+            });
+        }
+        
     })($('.j-svg-house'));
 
     return {};

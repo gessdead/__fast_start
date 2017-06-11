@@ -8,11 +8,21 @@
 
     @media (min-width: @screen-md) {
         flex-flow: row nowrap;
+        align-items: center;
     }
 }
 
 .smarthouse-descr__item {
     padding: 20px;
+    display: none;
+
+    @media (min-width: @screen-md) {
+        width: 50%;
+    }
+
+    &.is-active {
+        display: block;
+    }
 }
 
 .smarthouse-descr__ttl {
@@ -30,13 +40,26 @@
 .smarthouse__svg {
     overflow: hidden;
 
+    @media (min-width: @screen-md) {
+        width: 50%;
+    }
+
     svg {
         width: 360px;
         height: 350px;
-    }
+
+        @media (min-width: @screen-md) {
+            width: 560px;
+            height: 550px;
+        }
+     }
 }
 
 .smarthouse__svg-icon {
+
+    .icon-wrap {
+        cursor: pointer;
+    }
 
     .icon-wrap.is-active {
 

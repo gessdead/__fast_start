@@ -794,6 +794,10 @@ template {
 }
 .smarthouse-descr__item {
   padding: 20px;
+  display: none;
+}
+.smarthouse-descr__item.is-active {
+  display: block;
 }
 .smarthouse-descr__ttl {
   text-transform: uppercase;
@@ -811,6 +815,9 @@ template {
 .smarthouse__svg svg {
   width: 360px;
   height: 350px;
+}
+.smarthouse__svg-icon .icon-wrap {
+  cursor: pointer;
 }
 .smarthouse__svg-icon .icon-wrap.is-active .background {
   fill: #2fa0a9;
@@ -1061,6 +1068,18 @@ body {
   .smarthouse{
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .smarthouse-descr__item{
+    width: 50%;
+  }
+  .smarthouse__svg{
+    width: 50%;
+  }
+  .smarthouse__svg svg{
+    width: 560px;
+    height: 550px;
   }
   .magic{
     font-size: 48px;
